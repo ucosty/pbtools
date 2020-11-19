@@ -2,7 +2,9 @@
 name = "pbtools"
 version = "0.1.0"
 authors = ["Matthew Costa <ucosty@gmail.com>"]
+description = "Clipboard utilities for the CLI"
 edition = "2018"
+license = "GPL-3.0-or-later"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
