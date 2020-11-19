@@ -1,5 +1,8 @@
 # pbtools
 
+![Build Status](https://github.com/ucosty/pbtools/workflows/build/badge.svg)
+
+
 MacOS style clipboard utilities for the command line on X11 systems
 
 ## pbcopy
