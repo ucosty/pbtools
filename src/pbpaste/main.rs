@@ -6,11 +6,11 @@ use x11rb::protocol::xproto::*;
 use x11rb::protocol::Event;
 
 fn get_atom(conn: &impl Connection, name: &str) -> u32 {
-    return conn.intern_atom(false, name.as_bytes()).expect("Could not find clipboard").reply().unwrap().atom;
+    return conn.intern_atom(false, name.as_bytes()).unwrap().reply().unwrap().atom;
 }
 
 fn get_clipboard_value(conn: &impl Connection, window_id: u32, selection: u32, prop_id: u32, format_name: &str) -> String {
-    let format = get_atom(conn, format_name);
+    let format = get_atom(conn, format_name);    
     conn.convert_selection(window_id, selection, format, prop_id, Time::CurrentTime).unwrap();
     conn.flush().unwrap();
 
@@ -58,12 +58,11 @@ fn main() {
         visual: 0,
         value_list: std::borrow::Cow::Borrowed(&win_aux),
     }.send(&conn).unwrap();
-
-    conn.flush().unwrap();
     
     let mut response = get_clipboard_value(&conn, window_id, selection, prop_id, "UTF8_STRING");
     if response.is_empty() {
         response = get_clipboard_value(&conn, window_id, selection, prop_id, "STRING");
     }
+
     println!("{}", response);
 }
