@@ -1,6 +1,6 @@
 # pbtools
 
-MacOS style clipboard utilities for the command line
+MacOS style clipboard utilities for the command line on X11 systems
 
 ## pbcopy
 
@@ -18,4 +18,12 @@ pbpaste outputs the contents of the clipboard if it is a string
 
 ~~~shell script
 # pbpaste > output_file
+~~~
+
+# Building
+
+The pbtools are written in Rust, building the tools can be done with cargo
+
+~~~shell script
+# cargo build
 ~~~
